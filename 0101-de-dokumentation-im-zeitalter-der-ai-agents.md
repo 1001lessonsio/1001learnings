@@ -74,7 +74,7 @@ In einer Welt, in der AI Agents zunehmend zu echten Teammitgliedern werden, ist 
 
 Die Teams, die das früh verstehen und ihre Documentation-as-Code-Praxis ernst nehmen, werden mit AI Agents produktiv sein. Die anderen werden sich wundern, warum "AI-gestützte Entwicklung" bei ihnen nicht funktioniert.
 
-Die Antwort steckt meistens nicht im Tool. Sie steckt in eurer Doku.
+Die Antwort steckt meistens nicht im Tool. Sie steckt in eurer Doku, Euren Spezifikation, Euren Learnings.
 
 ---
 

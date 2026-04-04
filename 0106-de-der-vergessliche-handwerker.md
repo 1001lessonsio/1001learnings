@@ -89,7 +89,7 @@ Stell dir vor, der Handwerker hat morgens eine Checkliste: *Akkuschrauber da? Bo
 
 Wenn etwas fehlt, repariert der Agent es selbst — oder meldet klar, was manuell zu tun ist. Das Konzept ist nicht neu: CI/CD-Pipelines prüfen den Zustand des Codes vor jedem Deployment. Der Agent braucht dasselbe für sein eigenes Setup.
 
-## Was das für Organisationen bedeutet — und eine wichtige Idee
+## Was das für Organisationen bedeutet — heute schon
 
 Alles, was ich bisher beschrieben habe, funktioniert für einen Einzelentwickler mit ein bisschen Disziplin. Für eine Organisation mit 50, 200 oder 1.000 Entwicklern ist Disziplin keine Strategie.
 
@@ -114,6 +114,20 @@ curl -s https://internal.org/claude-setup.sh | bash
 
 Das Skript kopiert die globale `CLAUDE.md`, installiert Org-Skills, schreibt die MCP-Server-Konfiguration und führt `/org-health` als Abschluss-Check aus. Ein neuer Entwickler ist in unter einer Minute einsatzbereit — mit dem gleichen Setup wie alle anderen.
 
+## Eine wichtige Idee für Organisationen: das MCP-Gateway
+
+Die vier Gewohnheiten lösen das Problem für heute. Aber eine Frage bleibt: Eine Organisation hat nicht *einen* MCP-Server — sie hat viele. Deployment, Ticketsystem, Monitoring, Datenbank-Zugriff, interne Dokumentation. Jeder einzelne muss in der Konfiguration jedes Entwicklers stehen. Das ist exakt das gleiche Verteilungsproblem, das man mit Skripten und `CLAUDE.md` hatte — nur eine Abstraktionsebene höher.
+
+Die Lösung kennen wir aus der API-Welt: ein Gateway. Ein einziger Endpunkt, hinter dem alle Backend-Services stehen.
+
+**Ein MCP-Gateway würde bedeuten:**
+- **Ein Endpunkt statt 15** — der Agent verbindet sich mit dem Gateway, nicht mit jedem MCP-Server einzeln. In der lokalen Konfiguration steht genau eine URL.
+- **Discovery** — der Agent fragt: *"Welche Tools habe ich?"* Das Gateway aggregiert alle Backend-MCP-Server und liefert eine konsolidierte Tool-Liste. Das ist `/org-help` auf Infrastruktur-Ebene.
+- **Zentrale Governance** — wer darf welche Tools nutzen? Audit-Log: wer hat wann was aufgerufen? Rate Limiting: kein Agent schießt den Ticket-Server ab.
+- **Zero-Config-Änderungen** — neuer MCP-Server im Backend? Das Gateway routet automatisch. Tool deaktiviert wegen Security-Issue? Am Gateway abschalten, sofort für alle weg.
+
+Jede Organisation, die Microservices betreibt, hat irgendwann ein API-Gateway gebaut. Jede Organisation, die MCP-Server betreibt, wird dasselbe für MCP brauchen.
+
 ## Was bleibt
 
 AI-Agenten sind keine schlechten Handwerker. Sie sind vergessliche Handwerker. Und die Lösung ist nicht, auf besseres Gedächtnis zu warten — die Lösung ist, ihre Werkzeuge so zu organisieren, dass sie sie jeden Morgen wiederfinden.
@@ -126,4 +140,4 @@ Für einen Einzelentwickler reicht eine `CLAUDE.md` und die Disziplin, funktioni
 
 ## Changelog
 
-**2026-04-04** — Statusleisten-Beispiel entfernt, Fokus auf PDF-Beispiel als durchgängigen roten Faden. "Schichten" durch "Gewohnheiten" ersetzt. Überschriften geschärft. Kürzungen und Straffung.
+**2026-04-04** — Statusleisten-Beispiel entfernt, Fokus auf PDF-Beispiel als durchgängigen roten Faden. "Schichten" durch "Gewohnheiten" ersetzt. Überschriften geschärft. Kürzungen und Straffung. Neuer Abschnitt: MCP-Gateway als Idee für Organisationen.

@@ -90,7 +90,7 @@ Imagine the craftsman has a morning checklist: *Power drill present? Drill charg
 
 If something is missing, the agent fixes it — or clearly reports what needs manual action. The concept isn't new: CI/CD pipelines verify the state of code before every deployment. The agent needs the same for its own setup.
 
-## What This Means for Organizations — and One Important Idea
+## What This Means for Organizations — Today
 
 Everything I've described so far works for an individual developer with some discipline. For an organization with 50, 200, or 1,000 developers, discipline is not a strategy.
 
@@ -115,6 +115,20 @@ curl -s https://internal.org/claude-setup.sh | bash
 
 The script copies the global `CLAUDE.md`, installs org skills, writes MCP server configuration, and runs `/org-health` as a final check. A new developer is ready in under a minute — with the same setup as everyone else.
 
+## An Important Idea for Organizations: the MCP Gateway
+
+The four habits solve the problem for today. But one question remains: an organization doesn't have *one* MCP server — it has many. Deployment, ticketing, monitoring, database access, internal documentation. Each one needs to be in every developer's configuration. That's exactly the same distribution problem we had with scripts and `CLAUDE.md` — just one abstraction layer up.
+
+We know the solution from the API world: a gateway. A single endpoint with all backend services behind it.
+
+**An MCP Gateway would mean:**
+- **One endpoint instead of 15** — the agent connects to the gateway, not to each MCP server individually. The local configuration contains exactly one URL.
+- **Discovery** — the agent asks: *"What tools do I have?"* The gateway aggregates all backend MCP servers and delivers a consolidated tool list. This is `/org-help` at the infrastructure level.
+- **Central governance** — who's allowed to use which tools? Audit log: who called what, when? Rate limiting: no agent takes down the ticket server.
+- **Zero-config changes** — new MCP server in the backend? The gateway routes automatically. Tool disabled due to a security issue? Switch it off at the gateway, instantly gone for everyone.
+
+Every organization running microservices has eventually built an API gateway. Every organization running MCP servers will need the same for MCP.
+
 ## What Remains
 
 AI agents aren't bad craftsmen. They're forgetful craftsmen. And the solution isn't to wait for better memory — the solution is to organize their tools so they can find them every morning.
@@ -127,4 +141,4 @@ For an individual developer, a `CLAUDE.md` and the discipline to write down work
 
 ## Changelog
 
-**2026-04-04** — Removed status bar example, focused on PDF as the single running example. Replaced "layers" with "habits". Sharpened section headings. Cuts and tightening.
+**2026-04-04** — Removed status bar example, focused on PDF as the single running example. Replaced "layers" with "habits". Sharpened section headings. Cuts and tightening. New section: MCP Gateway as an idea for organizations.

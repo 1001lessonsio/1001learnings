@@ -19,11 +19,11 @@ coauthor_id: claude-opus-4-6
 
 ---
 
-Denke an den besten Handwerker, den Du kennst. Er kann alles bauen — Möbel, Installationen, Elektrik. Aber jeden Morgen, wenn er bei Dir im Haus steht, hat er vergessen, wo seine Werkzeuge liegen. Er weiß nicht mal mehr, dass er gestern einen Akkuschrauber benutzt hat. Also improvisiert er. Schraubt mit bloßen Händen. Oder läuft los und kauft einen neuen.
+Stell Dir den besten Handwerker vor, den Du Dir ausmalen kannst. Dieser Handwerker kann Dir alles bauen, alles fixen — Möbel, Installationen, Elektrik. Aber jeden Morgen, wenn er bei Dir im Haus steht, hat er vergessen, wo seine Werkzeuge liegen. Er weiß nicht mal mehr, dass er gestern einen Akkuschrauber benutzt hat. Also improvisiert er. Schraubt mit bloßen Händen. Oder läuft los und kauft einen neuen.
 
 Das ist kein hypothetisches Beispiel. Das ist Claude-Code/Codex/opencode/der KI-Agent der Wahl in Eurer Organisation nach einem Neustart. Dann, wenn ihr ihn am dringendsten braucht. Wenn aus der Spülmaschine das Wasser läuft, der Server down ist, der Kunde am Telefon wartet. 
 
-## Ein Negativbeispiel: Die PDF-Orgie
+## Ein Negativbeispiel: Das PDF Disaster
 
 In einer Session am Vormittag brauchte ich ein PDF aus einem Markdown-Dokument. Claude fand einen eleganten Weg: ein kleines Python-Skript, `fpdf2` und `markdown` als Dependencies, fertig. Sauber, transparent, hat auf Anhieb funktioniert. Ich war beeindruckt.
 
@@ -50,7 +50,7 @@ Das PDF-Problem war in 30 Sekunden gelöst, nachdem ich den Satz in die globale 
 **Die Lektion:** Wenn der Agent etwas heute richtig gemacht hat, lass es aufschreiben, bevor du die Session schließt. Nicht als Dokumentation für Menschen — als Instruktion für den Agenten.
 Und sei dabei explizit: Benenne, wo es aufgeschrieben werden soll, also konkret: *"Bitte merke Dir in der CLAUDE.md des lokalen Repos, dass ..."*. Ein bloßes *"bitte merke Dir"* führt dazu, dass Claude die Information in internen Memory-Dateien ablegt, die verloren gehen können.
 
-## Gewohnheit 2: Skills — jedes Werkzeug hat seinen Platz
+## Gewohnheit 2: Skills — gute Werkzeuge immer dabei haben
 
 Skills sind benutzerdefinierte Slash-Commands für Claude Code. Eine Markdown-Datei in `.claude/commands/`, die einen Prompt enthält. Wenn ich `/check-deploy` tippe, führt der Agent den Prompt aus — immer gleich, ohne Improvisation.
 

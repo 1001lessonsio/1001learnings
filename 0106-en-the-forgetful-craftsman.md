@@ -19,7 +19,7 @@ coauthor_id: claude-opus-4-6
 
 ---
 
-Think of the best craftsman you know. He can build anything — furniture, plumbing, electrical work. But every morning, when he shows up at your house, he's forgotten where his tools are. He doesn't even remember using a power drill yesterday. So he improvises. Screws things in by hand. Or walks out to buy a new one.
+Picture the best craftsman you can imagine. This craftsman can build anything for you, fix anything — furniture, plumbing, electrical work. But every morning, when he shows up at your house, he's forgotten where his tools are. He doesn't even remember using a power drill yesterday. So he improvises. Screws things in by hand. Or walks out to buy a new one.
 
 This is not a hypothetical. This is Claude Code, Codex, opencode — whichever AI agent your organization relies on — after a restart. Right when you need it most. When the dishwasher is flooding, the server is down, the client is on the phone.
 
@@ -51,7 +51,7 @@ My PDF problem was solved in 30 seconds once I wrote that sentence into the glob
 
 And be explicit about *where* it gets written down: *"Please note in the CLAUDE.md of this repo that..."*. A plain *"please remember"* causes Claude to store the information in internal memory files that can get lost.
 
-## Habit 2: Skills — Every Tool Has Its Place
+## Habit 2: Skills — Always Have the Right Tools on Hand
 
 Skills are custom slash commands for Claude Code. A Markdown file in `.claude/commands/` that contains a prompt. When I type `/check-deploy`, the agent executes that prompt — the same way every time, no improvisation.
 

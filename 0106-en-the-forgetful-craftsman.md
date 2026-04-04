@@ -5,6 +5,7 @@ title: "The Forgetful Craftsman — How to Teach AI Agents to Remember Their Own
 date: 2026-04-04
 stability: volatile
 review_by: 2027-04-04
+updated: 2026-04-04
 author: "Stefan Wendel"
 coauthor: "Claude Opus 4.6"
 coauthor_id: claude-opus-4-6
@@ -30,21 +31,13 @@ That afternoon — new session after a context clear — I needed another PDF. S
 
 That was the moment I realized: **The problem isn't the agent. The problem is me.** I hadn't written down the working recipe — at least not in a way the agent could find it in the next session.
 
-## The Vanishing Status Bar
-
-Second example: my Claude Code status bar. I'd configured it to show the current git branch, the name of my last pull request, and the current AWS image tag for my main repo. Useful information that otherwise requires three different terminal commands.
-
-After a reset: gone. Completely. And the worst part: I had forgotten that `/statusline-setup` exists as a skill — a slash command that restores exactly that configuration. The feature was there. I just couldn't remember how to invoke it.
-
-A feature that can't be discovered doesn't exist.
-
 ## The Forgetful Craftsman — and What Cures Him
 
-The craftsman isn't stupid. He doesn't need a better brain or more training — he's had plenty of both. He needs a system: tools in a fixed place, instructions on the wall, a checklist every morning.
+The craftsman isn't stupid. He doesn't need a better brain or more training — he's had plenty of both. He needs a system: tools in a fixed place, instructions on the wall, a checklist every morning. In short: good habits.
 
-For AI agents, such a system exists. It has four layers — each solving its own problem.
+For AI agents, such habits exist. Four of them — each solving its own problem.
 
-## Layer 1: CLAUDE.md — the Blueprint on the Wall
+## Habit 1: CLAUDE.md — the Blueprint on the Wall
 
 `CLAUDE.md` is a file the agent reads at the start of every session. It's his memory — or more precisely: his substitute for one.
 
@@ -56,19 +49,19 @@ My PDF problem was solved in 30 seconds once I wrote that sentence into the glob
 
 **The lesson:** If the agent did something right today, have it written down before you close the session. Not as documentation for humans — as an instruction for the agent.
 
-And be explicit about *where* it gets written down: *"Please note in the CLAUDE.md of this repo that..."*. A plain *"please remember"* causes Claude to store the information in internal memory files inside `.claude` directories. And here, a developer's gut feeling kicks in — correctly: directories and files starting with a dot don't belong in a repo.
+And be explicit about *where* it gets written down: *"Please note in the CLAUDE.md of this repo that..."*. A plain *"please remember"* causes Claude to store the information in internal memory files that can get lost.
 
-## Layer 2: Skills — Tools Belong in Their Place
+## Habit 2: Skills — Every Tool Has Its Place
 
 Skills are custom slash commands for Claude Code. A Markdown file in `.claude/commands/` that contains a prompt. When I type `/check-deploy`, the agent executes that prompt — the same way every time, no improvisation.
 
-This solves my status bar problem: `/statusline-setup` existed — but I'd forgotten about it. The learning: instruct Claude so that such information is listed and explained via a `/help` command.
+Instead of explaining the PDF solution path from scratch every time, I define it once as a skill. The learning: instruct Claude so that all available skills are listed and explained via a `/help` command.
 
 **Proposal: `/org-help`** — a skill that lists all organization-specific slash commands with a short description. If you don't know what exists, you can't use it. Discovery isn't a nice-to-have — discovery is the prerequisite for adoption.
 
 Skills live in `~/.claude/commands/` (global) or `.claude/commands/` (per repo). For a single project, that's fine. For a team or organization, distribution becomes the challenge — more on that shortly.
 
-## Layer 3: MCP Servers — the Engineering Department
+## Habit 3: MCP Servers — Call the Colleague from Another Trade
 
 My experience so far:
 
@@ -84,7 +77,7 @@ The real MCP advantage shows up for organizations and solves three problems:
 
 **My verdict on MCP:** As an individual developer: skip it, `CLAUDE.md` and scripts are enough. For organizations beyond a certain size: MCP is the right long-term approach — not because it standardizes workflow, but because it enforces consistency and centralizes maintenance.
 
-## Layer 4: The Morning Checklist
+## Habit 4: The Morning Checklist
 
 This is the piece that doesn't exist yet — and is the most urgently needed.
 
@@ -93,12 +86,11 @@ Imagine the craftsman has a morning checklist: *Power drill present? Drill charg
 **Proposal: `/org-health`** — a skill that verifies whether the agent's setup is complete:
 - Are all expected scripts present?
 - Are all MCP servers reachable?
-- Is the status bar configuration set?
 - Is the global `CLAUDE.md` up to date?
 
 If something is missing, the agent fixes it — or clearly reports what needs manual action. The concept isn't new: CI/CD pipelines verify the state of code before every deployment. The agent needs the same for its own setup.
 
-## What This Means for Organizations
+## What This Means for Organizations — and One Important Idea
 
 Everything I've described so far works for an individual developer with some discipline. For an organization with 50, 200, or 1,000 developers, discipline is not a strategy.
 
@@ -129,8 +121,10 @@ AI agents aren't bad craftsmen. They're forgetful craftsmen. And the solution is
 
 For an individual developer, a `CLAUDE.md` and the discipline to write down working recipes is enough. For an organization, it's not. That requires a rigorous approach: versioned configuration, distributed skills, central MCP servers, and an agent that can verify its own state.
 
-The irony: we're building tools that can process knowledge — but have no memory of their own. The job of giving them one falls to us.
-
 ---
 
 *How do you handle this? Have you experienced your agent "forgetting" something between sessions? I'd love to hear your take.*
+
+## Changelog
+
+**2026-04-04** — Removed status bar example, focused on PDF as the single running example. Replaced "layers" with "habits". Cuts and tightening.

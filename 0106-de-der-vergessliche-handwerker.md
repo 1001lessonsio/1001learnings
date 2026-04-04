@@ -5,6 +5,7 @@ title: "Der vergessliche Handwerker — Wie man AI-Agenten beibringt, sich an ih
 date: 2026-04-04
 stability: volatile
 review_by: 2027-04-04
+updated: 2026-04-04
 author: "Stefan Wendel"
 coauthor: "Claude Opus 4.6"
 coauthor_id: claude-opus-4-6
@@ -30,21 +31,13 @@ Am Nachmittag — neue Session nach einem Context-Clear — brauchte ich wieder 
 
 Das war der Moment, in dem mir klar wurde: **Das Problem ist nicht der Agent. Das Problem bin ich.** Ich hatte das funktionierende Rezept nicht aufgeschrieben — jedenfalls nicht so, dass der Agent es in der nächsten Session wiederfinden konnte.
 
-## Die verschwundene Statusleiste
-
-Zweites Beispiel: Meine Claude Code Statusleiste. Ich hatte sie eingerichtet, um den aktuellen Git-Branch, den Namen des letzten Pull Requests und das aktuelle AWS-Image-Tag meines Haupt-Repos zu sehen. Nützliche Informationen, die sonst drei verschiedene Terminal-Befehle brauchen.
-
-Nach einem Reset: weg. Komplett. Und das Schlimmste: Ich hatte vergessen, dass es `/statusline-setup` als Skill gibt — einen Slash-Command, der genau das wiederherstellt. Das Feature existierte. Aber ich wusste nicht mehr, wie ich es aufrufen konnte.
-
-Ein Feature, das nicht auffindbar ist, existiert nicht.
-
 ## Der vergessliche Handwerker — und was ihn heilt
 
-Der Handwerker ist nicht dumm, er braucht kein besseres Gehirn oder mehr Training (davon hat er mehr als genug). Er braucht ein System: Werkzeuge an einem festen Platz, Anleitungen an der Wand, eine Checkliste am Morgen.
+Der Handwerker ist nicht dumm, er braucht kein besseres Gehirn oder mehr Training (davon hat er mehr als genug). Er braucht ein System: Werkzeuge an einem festen Platz, Anleitungen an der Wand, eine Checkliste am Morgen. Kurz: gute Gewohnheiten.
 
-Für AI-Agenten gibt es ein solches System. Es besteht aus vier Schichten — und jede löst ein eigenes Problem.
+Für AI-Agenten gibt es solche Gewohnheiten. Vier Stück — und jede löst ein eigenes Problem.
 
-## Schicht 1: CLAUDE.md — der Plan an der Wand
+## Gewohnheit 1: CLAUDE.md — der Plan an der Wand
 
 `CLAUDE.md` ist eine Datei, die der Agent beim Start jeder Session liest. Sie ist sein Gedächtnis — oder genauer: sein Ersatz dafür.
 
@@ -55,19 +48,19 @@ Es gibt zwei Ebenen:
 Das PDF-Problem war in 30 Sekunden gelöst, nachdem ich den Satz in die globale `CLAUDE.md` geschrieben hatte (bzw. schreiben ließ). Seitdem ist klar, wie PDFs generiert werden sollen.
 
 **Die Lektion:** Wenn der Agent etwas heute richtig gemacht hat, lass es aufschreiben, bevor du die Session schließt. Nicht als Dokumentation für Menschen — als Instruktion für den Agenten.
-Und sei dabei explizit: Benenne, wo es aufgeschrieben werden soll, also konkret: *"Bitte merke Dir in der CLAUDE.md des lokalen Repos, dass ..."*. Ein bloßes *"bitte merke Dir"* führt dazu, dass Claude die Information in internen Memory-Dateien ablegt, die in `.claude`-Verzeichnissen liegen. Und hier greift das (richtige) Bauchgefühl eines Entwicklers: Verzeichnisse und Dateien, die mit einem Punkt beginnen, gehören nicht in ein Repo.
+Und sei dabei explizit: Benenne, wo es aufgeschrieben werden soll, also konkret: *"Bitte merke Dir in der CLAUDE.md des lokalen Repos, dass ..."*. Ein bloßes *"bitte merke Dir"* führt dazu, dass Claude die Information in internen Memory-Dateien ablegt, die verloren gehen können.
 
-## Schicht 2: Skills — Werkzeuge gehören an ihren Platz
+## Gewohnheit 2: Skills — jedes Werkzeug hat seinen Platz
 
 Skills sind benutzerdefinierte Slash-Commands für Claude Code. Eine Markdown-Datei in `.claude/commands/`, die einen Prompt enthält. Wenn ich `/check-deploy` tippe, führt der Agent den Prompt aus — immer gleich, ohne Improvisation.
 
-Das löst mein Statusleisten-Problem: `/statusline-setup` existierte — aber ich hatte es vergessen. Das Learning: Instruiere Claude so, dass solche Infos mittels `/help`-Command aufgelistet und erklärt werden.
+Statt bei jedem PDF-Problem den Lösungsweg neu zu erklären, definiere ich ihn einmal als Skill. Das Learning: Instruiere Claude so, dass alle verfügbaren Skills mittels `/help`-Command aufgelistet und erklärt werden.
 
 **Vorschlag: `/org-help`** — ein Skill, der alle Org-eigenen Slash-Commands mit Kurzbeschreibung auflistet. Wer nicht weiß, was es gibt, kann nichts nutzen. Discovery ist kein Nice-to-have — Discovery ist die Voraussetzung für Nutzung.
 
 Skills leben in `~/.claude/commands/` (global) oder `.claude/commands/` (pro Repo). Für ein einzelnes Projekt reicht das. Für ein Team oder eine Organisation wird Verteilung zum Thema — dazu gleich mehr.
 
-## Schicht 3: MCP-Server — die Bauabteilung in der Firma
+## Gewohnheit 3: MCP-Server — rufe den Kollegen vom anderen Gewerk
 
 Meine bisherige Erfahrung:
 
@@ -83,7 +76,7 @@ Der eigentliche MCP-Vorteil zeigt sich für Organisationen und löst drei Proble
 
 **Fazit zu MCP:** Als Einzelentwickler: skip it, `CLAUDE.md` und Skripte reichen. Für Organisationen ab einer gewissen Größe: MCP ist der richtige Langzeit-Ansatz — nicht wegen Konsistenz der Vorgehensweise, sondern wegen erzwungener Konsistenz und zentraler Wartung.
 
-## Schicht 4: Die Checkliste am Morgen
+## Gewohnheit 4: Die Checkliste am Morgen
 
 Das ist der Baustein, den es noch nicht gibt — und der am dringendsten fehlt.
 
@@ -92,12 +85,11 @@ Stell dir vor, der Handwerker hat morgens eine Checkliste: *Akkuschrauber da? Bo
 **Vorschlag: `/org-health`** — ein Skill, der prüft, ob das Agent-Setup vollständig ist:
 - Sind alle erwarteten Skripte vorhanden?
 - Sind alle MCP-Server erreichbar?
-- Ist die Statusleisten-Konfiguration gesetzt?
 - Ist die globale `CLAUDE.md` aktuell?
 
 Wenn etwas fehlt, repariert der Agent es selbst — oder meldet klar, was manuell zu tun ist. Das Konzept ist nicht neu: CI/CD-Pipelines prüfen den Zustand des Codes vor jedem Deployment. Der Agent braucht dasselbe für sein eigenes Setup.
 
-## Was das für Organisationen bedeutet
+## Was das für Organisationen bedeutet — und eine wichtige Idee
 
 Alles, was ich bisher beschrieben habe, funktioniert für einen Einzelentwickler mit ein bisschen Disziplin. Für eine Organisation mit 50, 200 oder 1.000 Entwicklern ist Disziplin keine Strategie.
 
@@ -128,8 +120,10 @@ AI-Agenten sind keine schlechten Handwerker. Sie sind vergessliche Handwerker. U
 
 Für einen Einzelentwickler reicht eine `CLAUDE.md` und die Disziplin, funktionierende Rezepte aufzuschreiben. Für eine Organisation reicht das nicht. Da braucht es ein stringentes Vorgehen: versionierte Konfiguration, verteilte Skills, zentrale MCP-Server und einen Agent, der seinen eigenen Zustand prüfen kann.
 
-Die Ironie: Wir bauen Tools, die Wissen verarbeiten können — aber kein eigenes Gedächtnis haben. Die Aufgabe, ihnen eines zu geben, liegt bei uns.
-
 ---
 
 *Wie handhabt ihr das? Habt ihr schon erlebt, dass euer Agent in der nächsten Session etwas "vergessen" hat? Ich freue mich über Austausch.*
+
+## Changelog
+
+**2026-04-04** — Statusleisten-Beispiel entfernt, Fokus auf PDF-Beispiel als durchgängigen roten Faden. "Schichten" durch "Gewohnheiten" ersetzt. Kürzungen und Straffung.

@@ -23,7 +23,7 @@ Denke an den besten Handwerker, den Du kennst. Er kann alles bauen — Möbel, I
 
 Das ist kein hypothetisches Beispiel. Das ist Claude-Code/Codex/opencode/der KI-Agent der Wahl in Eurer Organisation nach einem Neustart. Dann, wenn ihr ihn am dringendsten braucht. Wenn aus der Spülmaschine das Wasser läuft, der Server down ist, der Kunde am Telefon wartet. 
 
-## Die PDF-Orgie
+## Ein Negativbeispiel: Die PDF-Orgie
 
 In einer Session am Vormittag brauchte ich ein PDF aus einem Markdown-Dokument. Claude fand einen eleganten Weg: ein kleines Python-Skript, `fpdf2` und `markdown` als Dependencies, fertig. Sauber, transparent, hat auf Anhieb funktioniert. Ich war beeindruckt.
 
@@ -31,7 +31,7 @@ Am Nachmittag — neue Session nach einem Context-Clear — brauchte ich wieder 
 
 Das war der Moment, in dem mir klar wurde: **Das Problem ist nicht der Agent. Das Problem bin ich.** Ich hatte das funktionierende Rezept nicht aufgeschrieben — jedenfalls nicht so, dass der Agent es in der nächsten Session wiederfinden konnte.
 
-## Der vergessliche Handwerker — und was ihn heilt
+## Gute Handwerker haben gute Gewohnheiten
 
 Der Handwerker ist nicht dumm, er braucht kein besseres Gehirn oder mehr Training (davon hat er mehr als genug). Er braucht ein System: Werkzeuge an einem festen Platz, Anleitungen an der Wand, eine Checkliste am Morgen. Kurz: gute Gewohnheiten.
 
@@ -126,4 +126,4 @@ Für einen Einzelentwickler reicht eine `CLAUDE.md` und die Disziplin, funktioni
 
 ## Changelog
 
-**2026-04-04** — Statusleisten-Beispiel entfernt, Fokus auf PDF-Beispiel als durchgängigen roten Faden. "Schichten" durch "Gewohnheiten" ersetzt. Kürzungen und Straffung.
+**2026-04-04** — Statusleisten-Beispiel entfernt, Fokus auf PDF-Beispiel als durchgängigen roten Faden. "Schichten" durch "Gewohnheiten" ersetzt. Überschriften geschärft. Kürzungen und Straffung.

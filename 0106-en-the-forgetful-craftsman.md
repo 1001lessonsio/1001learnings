@@ -23,7 +23,7 @@ Think of the best craftsman you know. He can build anything — furniture, plumb
 
 This is not a hypothetical. This is Claude Code, Codex, opencode — whichever AI agent your organization relies on — after a restart. Right when you need it most. When the dishwasher is flooding, the server is down, the client is on the phone.
 
-## The PDF Debacle
+## A Cautionary Tale: The PDF Debacle
 
 In a morning session, I needed a PDF from a Markdown document. Claude found an elegant solution: a small Python script, `fpdf2` and `markdown` as dependencies, done. Clean, transparent, worked on the first try. I was impressed.
 
@@ -31,7 +31,7 @@ That afternoon — new session after a context clear — I needed another PDF. S
 
 That was the moment I realized: **The problem isn't the agent. The problem is me.** I hadn't written down the working recipe — at least not in a way the agent could find it in the next session.
 
-## The Forgetful Craftsman — and What Cures Him
+## Good Craftsmen Have Good Habits
 
 The craftsman isn't stupid. He doesn't need a better brain or more training — he's had plenty of both. He needs a system: tools in a fixed place, instructions on the wall, a checklist every morning. In short: good habits.
 
@@ -127,4 +127,4 @@ For an individual developer, a `CLAUDE.md` and the discipline to write down work
 
 ## Changelog
 
-**2026-04-04** — Removed status bar example, focused on PDF as the single running example. Replaced "layers" with "habits". Cuts and tightening.
+**2026-04-04** — Removed status bar example, focused on PDF as the single running example. Replaced "layers" with "habits". Sharpened section headings. Cuts and tightening.

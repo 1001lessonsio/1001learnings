@@ -23,7 +23,7 @@ Denke an den besten Handwerker, den Du kennst. Er kann alles bauen — Möbel, I
 
 Das ist kein hypothetisches Beispiel. Das ist Claude-Code/Codex/opencode/der KI-Agent der Wahl in Eurer Organisation nach einem Neustart. Dann, wenn ihr ihn am dringendsten braucht. Wenn aus der Spülmaschine das Wasser läuft, der Server down ist, der Kunde am Telefon wartet. 
 
-## Ein Negativbeispiel: Die PDF-Orgie
+## Ein Negativbeispiel: Das PDF Disaster
 
 In einer Session am Vormittag brauchte ich ein PDF aus einem Markdown-Dokument. Claude fand einen eleganten Weg: ein kleines Python-Skript, `fpdf2` und `markdown` als Dependencies, fertig. Sauber, transparent, hat auf Anhieb funktioniert. Ich war beeindruckt.
 
